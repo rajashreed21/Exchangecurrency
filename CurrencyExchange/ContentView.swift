@@ -12,7 +12,7 @@ struct ExchangeRate: Codable {
     let rate: Double
 }
 
-// View model responsible for fetching exchange rates
+
 class CurrencyViewModel: ObservableObject {
     @Published var exchangeRates: [ExchangeRate] = []
     
@@ -53,7 +53,6 @@ class CurrencyViewModel: ObservableObject {
 
 }
 
-// Main content view displaying exchange rates in a list
 struct ContentView: View {
     @ObservedObject var viewModel = CurrencyViewModel()
     
@@ -65,6 +64,7 @@ struct ContentView: View {
                         .font(.headline)
                     Text("Rate: \(rate.rate, specifier: "%.2f")")
                         .foregroundColor(.secondary)
+                        .preferredColorScheme(.dark)
                 }
             }
             .navigationBarTitle("Exchange Rates")
@@ -72,7 +72,6 @@ struct ContentView: View {
     }
 }
 
-// Preview provider for ContentView
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
